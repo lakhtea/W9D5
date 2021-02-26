@@ -1,4 +1,4 @@
-let todos
+let todos;
 
 if (localStorage.getItem("todos")) {
   todos = JSON.parse(localStorage.getItem("todos"));
@@ -19,8 +19,8 @@ function addTodo(event) {
   todos.push(todo);
   document.getElementsByName("add-todo")[0].value = "";
   const JSONArray = JSON.stringify(todos);
-  localStorage.setItem('todos', JSONArray);
-  populateListItem(todo, todos.length-1);
+  localStorage.setItem("todos", JSONArray);
+  populateListItem(todo, todos.length - 1);
 }
 
 function populateListItem(item, idx) {
@@ -31,10 +31,10 @@ function populateListItem(item, idx) {
 
   span.innerHTML = item.value;
   input.type = "checkbox";
-  input.setAttribute("data-id", idx)
+  input.setAttribute("data-id", idx);
 
   if (item.done) {
-    input.checked = true
+    input.checked = true;
   }
 
   label.append(input);
@@ -50,22 +50,20 @@ function populateList(arr) {
 }
 
 function toggleCheck(event) {
-  debugger
-  event.currentTarget.checked = !event.currentTarget.checked
-  // todos[event.currentTarget]
+  const input = event.target.parentElement.childNodes[0];
+  todos[input.dataset.id].done = !todos[input.dataset.id].done;
+  const JSONArray = JSON.stringify(todos);
+  localStorage.setItem("todos", JSONArray);
 }
 
 // add event listener to after DOM loaded
+document.addEventListener("DOMContentLoaded", () => {
+  const checkies = Array.from(document.querySelectorAll(".todos"));
 
-const checkies = Array.from(document.querySelectorAll(".todos label"));
-
-for (let i = 0; i < checkies.length; i++) {
-  debugger
-  checkies[i].addEventListener("click", toggleCheck);
-}
-
-console.log(checkies);
-
+  for (let i = 0; i < checkies.length; i++) {
+    checkies[i].addEventListener("click", toggleCheck);
+  }
+});
 
 document.querySelector(".add-todo-form").addEventListener("submit", addTodo);
 populateList(todos);
