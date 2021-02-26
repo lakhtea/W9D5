@@ -10,4 +10,4 @@ export const htmlGenerator = (string, htmlElement, tag) => {
   }
 };
 
-htmlGenerator("Party Time.", partyHeader);
+htmlGenerator("Party Time.", partyHeader, "p");

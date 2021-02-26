@@ -1,15 +1,19 @@
-
 html {
   box-sizing: border-box;
-  background: #A9DBB8;
+  background: #a9dbb8;
   text-align: center;
 }
 
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
 h1 {
-  color: #F0F2EF;
-  font-family: 'helvetica neue';
-  font-size: 20px;
-  font-weight: 200;
+  color: #f0f2ef;
+  font-family: "helvetica neue";
+  font-size: 48px;
+  font-weight: bold;
 }
 
 .header {
@@ -36,7 +40,7 @@ h1 {
 
 .slide {
   opacity: 0;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .align-left.slide {
@@ -56,3 +60,22 @@ li.hidden {
   display: none;
 }
 
+#clock p {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 2px solid white;
+  width: 100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.drop-down-dog-nav {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 2px solid white;
+  width: 100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  align-self: flex-end;
+}
